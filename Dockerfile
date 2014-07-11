@@ -19,8 +19,8 @@ CMD ["/sbin/my_init"]
 # ...put your own build instructions here...
 # install development headers for postgresql client
 RUN apt-get update
-RUN apt-get install libzmq3
-RUN gem install ffi-rzmq
+RUN apt-get install libzmq3 -y
+RUN gem install ffi-rzmq --no-ri --no-rdoc
 
 # setup hello app as the 'app' user
 RUN mkdir -p /home/app/hello
