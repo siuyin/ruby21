@@ -21,6 +21,7 @@ CMD ["/sbin/my_init"]
 # install development headers for postgresql client
 RUN apt-get update
 RUN apt-get install libzmq3 -y
+RUN ln -s /usr/lib/x86_64-linux-gnu/libzmq.so.3 /usr/local/bin/libzmq.so
 RUN gem install ffi-rzmq --no-ri --no-rdoc
 
 # setup hello app as the 'app' user
