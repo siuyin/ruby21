@@ -20,15 +20,14 @@ CMD ["/sbin/my_init"]
 # ...put your own build instructions here...
 # install development headers for postgresql client
 RUN apt-get update
-RUN apt-get install libzmq3 -y
-RUN ln -s /usr/lib/x86_64-linux-gnu/libzmq.so.3 /usr/local/bin/libzmq.so
+RUN apt-get install libzmq1 libzmq-dev zlib1g-dev libpq-dev postgresql-client -y
 RUN gem install ffi-rzmq --no-ri --no-rdoc
+RUN gem install rails --no-ri --no-rdoc
 
 # setup hello app as the 'app' user
-RUN mkdir -p /home/app/hello
-WORKDIR /home/app/hello
+RUN mkdir -p /home/app
+WORKDIR /home/app
 ENV RAILS_ENV production
-RUN mkdir -p /etc/my_init.d
 
 EXPOSE 22 80 443
 
