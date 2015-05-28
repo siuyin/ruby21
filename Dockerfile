@@ -21,8 +21,7 @@ CMD ["/sbin/my_init"]
 # install development headers for postgresql client
 RUN apt-get update
 RUN apt-get install libzmq1 libzmq-dev zlib1g-dev libpq-dev postgresql-client -y
-RUN gem install ffi-rzmq --no-ri --no-rdoc
-RUN gem install rails --no-ri --no-rdoc
+RUN gem install rails ffi-rzmq --no-ri --no-rdoc
 
 # setup hello app as the 'app' user
 RUN mkdir -p /home/app
